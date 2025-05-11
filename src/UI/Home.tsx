@@ -1,5 +1,15 @@
+import NavBar from "./NavBar";
+import Hero from "./Hero";
+import Footer from "./Footer";
+
 function Home() {
-  return <div className="text-7xl">HOME</div>;
+  return (
+    <div className="h-screen w-full">
+      <NavBar />
+      <Hero />
+      <Footer />
+    </div>
+  );
 }
 
 export default Home;
