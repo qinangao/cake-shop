@@ -1,4 +1,5 @@
 import { JSX, useState } from "react";
+import Button from "./Button";
 
 export default function NavBar(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,15 +47,11 @@ export default function NavBar(): JSX.Element {
 
             {/* Show only on mobile */}
             <li className="block md:hidden">
-              <button className="border-white border-2 px-3 py-1 transition-transform transform hover:scale-[1.1] rounded-xl text-[20px] cursor-pointer">
-                Log in
-              </button>
+              <Button isHover={false}>Log in</Button>
             </li>
           </ul>
         </div>
-        <button className="hidden md:block border-black border-2 px-3 py-1 transition-transform transform hover:scale-[1.1] rounded-xl text-[20px] cursor-pointer">
-          Log in
-        </button>
+        <Button className="hidden md:block">Log in</Button>
       </nav>
     </header>
   );
