@@ -28,7 +28,7 @@ export default function NavBar(): JSX.Element {
           {!isOpen && (
             <img
               className={menuBtnStyle}
-              src="/assets/icons8-menu.svg"
+              src="/assets/icons/icons8-menu.svg"
               alt="open btn"
               onClick={() => setIsOpen(true)}
             />
@@ -36,7 +36,7 @@ export default function NavBar(): JSX.Element {
           {isOpen && (
             <img
               className={menuBtnStyle}
-              src="/assets/icons8-close.svg"
+              src="/assets/icons/icons8-close.svg"
               alt="close btn"
               onClick={() => setIsOpen(false)}
             />
