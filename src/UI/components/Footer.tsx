@@ -18,7 +18,7 @@ function Footer() {
             placeholder="Enter your email"
           />
           <button className="cursor-pointer">
-            <img src="/assets/icons8-sent-30.png" alt="sent" />
+            <img src="/assets/icons/icons8-sent-30.png" alt="sent" />
           </button>
         </div>
       </form>
