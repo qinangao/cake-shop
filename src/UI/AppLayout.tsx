@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 
 function AppLayout() {
   return (
-    <div>
+    <div className="grid h-screen grid-rows-[auto_1fr_auto]">
       <NavBar />
       <main>
         <Outlet />
