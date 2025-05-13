@@ -1,6 +1,7 @@
 import { JSX, useState } from "react";
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { HiOutlineUser } from "react-icons/hi";
 
 export default function NavBar(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,13 +55,13 @@ export default function NavBar(): JSX.Element {
             ))}
 
             <li className="block md:hidden">
-              <Button to="/login">Log in</Button>
+              <Button to="/login">Login</Button>
             </li>
           </ul>
         </div>
-        <Button to="/login" className="hidden md:block">
-          Log in
-        </Button>
+        <NavLink className="hidden md:block cursor-pointer" to="/login">
+          <HiOutlineUser className="w-6 h-6 mr-7" />
+        </NavLink>
       </nav>
     </header>
   );
