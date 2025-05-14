@@ -5,7 +5,7 @@ import Button from "../../UI/components/Button";
 function Login() {
   return (
     <>
-      <div className="text-[18px] py-10">
+      <div className="text-[18px] py-20">
         <h2 className="text-center text-3xl pb-10">Login</h2>
         <form className="max-w-lg mx-auto p-6 rounded-xl  space-y-4">
           <div>
