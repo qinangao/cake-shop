@@ -2,7 +2,7 @@ import { JSX, useState } from "react";
 import Button from "./Button";
 import { Link, NavLink } from "react-router-dom";
 import { HiOutlineUser } from "react-icons/hi";
-import CartIcon from "./CartIcon";
+import CartSidebar from "../../features/cart/CartSideBar";
 
 export default function NavBar(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +64,7 @@ export default function NavBar(): JSX.Element {
           <NavLink className="hidden md:block cursor-pointer" to="/login">
             <HiOutlineUser className="w-6 h-6 mr-7" />
           </NavLink>
-          <CartIcon />
+          <CartSidebar />
         </div>
       </nav>
     </header>
