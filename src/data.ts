@@ -5,79 +5,80 @@ export type Cake = {
   name: string;
   price: number;
   image: string;
+  description: string;
 };
 
 export const cakes: Cake[] = [
   {
+    id: 0,
+    image: "/assets/cakes/image-waffle-desktop.jpg",
+    name: "Waffle with Berries",
+    price: 6.5,
+    description:
+      'Please store at 0–4°C and consume within 24 hours for the best taste. Fruit decorations may vary depending on seasonal availability. Kindly inform us of any fruit allergies in advance. All cakes are made fresh daily — cancellations or changes are not allowed within 2 days of the delivery date. Available in 6" (serves 4–6, includes 1 utensil set) and 8" (serves 6–8, includes 1 utensil set).',
+  },
+  {
     id: 1,
-    name: "Chocolate Fudge Cake",
-    price: 25.99,
-    image: "/images/chocolate-fudge.jpg",
+    image: "/assets/cakes/image-creme-brulee-desktop.jpg",
+    name: "Vanilla Bean Crème Brûlée",
+    price: 7.0,
+    description:
+      'Please store at 0–4°C and consume within 24 hours for the best taste. Fruit decorations may vary depending on seasonal availability. Kindly inform us of any fruit allergies in advance. All cakes are made fresh daily — cancellations or changes are not allowed within 2 days of the delivery date. Available in 6" (serves 4–6, includes 1 utensil set) and 8" (serves 6–8, includes 1 utensil set).',
   },
   {
     id: 2,
-    name: "Red Velvet Cake",
-    price: 29.99,
-    image: "/images/red-velvet.jpg",
+    image: "/assets/cakes/image-macaron-desktop.jpg",
+    name: "Macaron Mix of Five",
+    price: 8.0,
+    description:
+      'Please store at 0–4°C and consume within 24 hours for the best taste. Fruit decorations may vary depending on seasonal availability. Kindly inform us of any fruit allergies in advance. All cakes are made fresh daily — cancellations or changes are not allowed within 2 days of the delivery date. Available in 6" (serves 4–6, includes 1 utensil set) and 8" (serves 6–8, includes 1 utensil set).',
   },
   {
     id: 3,
-    name: "Lemon Drizzle Cake",
-    price: 22.5,
-    image: "/images/lemon-drizzle.jpg",
+    image: "/assets/cakes/image-tiramisu-desktop.jpg",
+    name: "Classic Tiramisu",
+    price: 5.5,
+    description:
+      'Please store at 0–4°C and consume within 24 hours for the best taste. Fruit decorations may vary depending on seasonal availability. Kindly inform us of any fruit allergies in advance. All cakes are made fresh daily — cancellations or changes are not allowed within 2 days of the delivery date. Available in 6" (serves 4–6, includes 1 utensil set) and 8" (serves 6–8, includes 1 utensil set).',
   },
   {
     id: 4,
-    name: "Carrot Cake",
-    price: 24.0,
-    image: "/images/carrot-cake.jpg",
+    image: "/assets/cakes/image-baklava-desktop.jpg",
+    name: "Pistachio Baklava",
+    price: 4.0,
+    description:
+      'Please store at 0–4°C and consume within 24 hours for the best taste. Fruit decorations may vary depending on seasonal availability. Kindly inform us of any fruit allergies in advance. All cakes are made fresh daily — cancellations or changes are not allowed within 2 days of the delivery date. Available in 6" (serves 4–6, includes 1 utensil set) and 8" (serves 6–8, includes 1 utensil set).',
   },
   {
     id: 5,
-    name: "Strawberry Shortcake",
-    price: 27.75,
-    image: "/images/strawberry-shortcake.jpg",
+    image: "/assets/cakes/image-meringue-desktop.jpg",
+    name: "Lemon Meringue Pie",
+    price: 5.0,
+    description:
+      'Please store at 0–4°C and consume within 24 hours for the best taste. Fruit decorations may vary depending on seasonal availability. Kindly inform us of any fruit allergies in advance. All cakes are made fresh daily — cancellations or changes are not allowed within 2 days of the delivery date. Available in 6" (serves 4–6, includes 1 utensil set) and 8" (serves 6–8, includes 1 utensil set).',
   },
   {
     id: 6,
-    name: "Vanilla Bean Cake",
-    price: 21.95,
-    image: "/images/vanilla-bean.jpg",
+    image: "/assets/cakes/image-cake-desktop.jpg",
+    name: "Red Velvet Cake",
+    price: 4.5,
+    description:
+      'Please store at 0–4°C and consume within 24 hours for the best taste. Fruit decorations may vary depending on seasonal availability. Kindly inform us of any fruit allergies in advance. All cakes are made fresh daily — cancellations or changes are not allowed within 2 days of the delivery date. Available in 6" (serves 4–6, includes 1 utensil set) and 8" (serves 6–8, includes 1 utensil set).',
   },
   {
     id: 7,
-    name: "Black Forest Cake",
-    price: 30.0,
-    image: "/images/black-forest.jpg",
+    image: "/assets/cakes/image-brownie-desktop.jpg",
+    name: "Salted Caramel Brownie",
+    price: 4.5,
+    description:
+      'Please store at 0–4°C and consume within 24 hours for the best taste. Fruit decorations may vary depending on seasonal availability. Kindly inform us of any fruit allergies in advance. All cakes are made fresh daily — cancellations or changes are not allowed within 2 days of the delivery date. Available in 6" (serves 4–6, includes 1 utensil set) and 8" (serves 6–8, includes 1 utensil set).',
   },
   {
     id: 8,
-    name: "Coffee Walnut Cake",
-    price: 23.5,
-    image: "/images/coffee-walnut.jpg",
-  },
-  {
-    id: 9,
-    name: "Pineapple Upside Down Cake",
-    price: 26.25,
-    image: "/images/pineapple-upside.jpg",
-  },
-  {
-    id: 10,
-    name: "Funfetti Cake",
-    price: 20.99,
-    image: "/images/funfetti.jpg",
-  },
-  {
-    id: 11,
-    name: "Tiramisu Cake",
-    price: 31.5,
-    image: "/images/tiramisu.jpg",
-  },
-  {
-    id: 12,
-    name: "Coconut Cream Cake",
-    price: 28.0,
-    image: "/images/coconut-cream.jpg",
+    image: "/assets/cakes/image-panna-cotta-desktop.jpg",
+    name: "Vanilla Panna Cotta",
+    price: 6.5,
+    description:
+      'Please store at 0–4°C and consume within 24 hours for the best taste. Fruit decorations may vary depending on seasonal availability. Kindly inform us of any fruit allergies in advance. All cakes are made fresh daily — cancellations or changes are not allowed within 2 days of the delivery date. Available in 6" (serves 4–6, includes 1 utensil set) and 8" (serves 6–8, includes 1 utensil set).',
   },
 ];
