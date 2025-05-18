@@ -9,6 +9,7 @@ type ButtonProps = {
   textColor?: string;
   hoverBgColor?: string;
   hoverTextColor?: string;
+  hoverScale?: string;
   isHover?: boolean;
   onClick?: () => void;
   className?: string; // Add className property
@@ -26,6 +27,7 @@ function Button({
   hoverBgColor = "black",
   hoverTextColor = "white",
   isHover = true,
+  hoverScale = "105",
   onClick,
 }: ButtonProps) {
   const baseStyle = {
@@ -36,9 +38,9 @@ function Button({
     color: textColor,
   };
 
-  const commonClasses = `border-2 border-black px-3 rounded-xl text-center cursor-pointer transform transition-transform ${
-    isHover ? "hover:scale-110" : ""
-  } ${className}`;
+  const scaleClass = isHover && hoverScale ? `hover:scale-${hoverScale}` : "";
+
+  const commonClasses = `border-2 border-black px-3 rounded-xl text-center cursor-pointer transform transition-transform ${scaleClass} ${className}`;
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     if (isHover) {
