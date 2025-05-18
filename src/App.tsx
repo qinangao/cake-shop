@@ -5,6 +5,8 @@ import AboutUs from "./UI/pages/AboutUs";
 import Contact from "./UI/pages/Contact";
 import AppLayout from "./UI/AppLayout";
 import Login from "./features/user/Login";
+import CakeDetail from "./features/menu/CakeDetail";
+
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -12,6 +14,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/menu", element: <Menu /> },
       { path: "/aboutus", element: <AboutUs /> },
+      { path: "/cake/:id", element: <CakeDetail /> },
       { path: "/contactus", element: <Contact /> },
       { path: "/login", element: <Login /> },
     ],
