@@ -4,10 +4,11 @@ import { CakeSize } from "../../data";
 export type CartItem = {
   id: number; // cake id
   name: string;
-  price: number;
+  totalPrice: number;
   quantity: number;
   size?: CakeSize;
 };
+type stateType = { cart: { cart: CartItem[] } };
 
 const initialState: { cart: CartItem[] } = {
   cart: [],
@@ -26,6 +27,10 @@ const cartSlice = createSlice({
     },
   },
 });
+
+export const getCart = (state: stateType) => state.cart.cart;
+export const getTotalCartPrice = (state: stateType) =>
+  state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
 
 export const { addItem, clearCart } = cartSlice.actions;
 
