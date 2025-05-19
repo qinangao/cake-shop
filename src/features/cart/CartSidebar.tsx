@@ -1,18 +1,24 @@
 import { BsCart2 } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Button from "../../UI/components/Button";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getCart, getTotalCartPrice } from "./cartSlice";
 
 function CartIcon() {
   const [isOpen, setIsOpen] = useState(false);
+  const cart = useSelector(getCart);
+  const totalCartPrice = useSelector(getTotalCartPrice);
 
-  const mockCartItems = [
-    { id: 1, name: "T-shirt", price: "$19.99" },
-    { id: 2, name: "Sneakers", price: "$49.99" },
-    { id: 3, name: "Cap", price: "$12.99" },
-  ];
+  const prevCartLength = useRef(cart.length);
+  useEffect(() => {
+    if (cart.length > prevCartLength.current) {
+      setIsOpen(true);
+    }
+    prevCartLength.current = cart.length;
+  }, [cart.length]);
 
   return (
     <>
@@ -61,7 +67,7 @@ function CartIcon() {
                 </button>
               </div>
 
-              {mockCartItems.length === 0 ? (
+              {cart.length === 0 ? (
                 <div className="text-center text-gray-600 mt-10">
                   <p className="text-lg font-medium">Your cart is empty.</p>
                   <Link
@@ -73,19 +79,21 @@ function CartIcon() {
                 </div>
               ) : (
                 <ul className="space-y-3 flex-grow overflow-y-auto">
-                  {mockCartItems.map((item) => (
+                  {cart.map((item) => (
                     <li
                       key={item.id}
                       className="flex justify-between border-b pb-2 text-sm"
                     >
                       <span>{item.name}</span>
-                      <span>{item.price}</span>
+                      <span>${item.totalPrice}</span>
                     </li>
                   ))}
                 </ul>
               )}
 
-              <div className="font-semibold text-right pb-5">Total: $82.97</div>
+              <div className="font-semibold text-right pb-5">
+                Total: ${totalCartPrice}
+              </div>
               <Button bgColor="black" textColor="white">
                 Check Out
               </Button>
