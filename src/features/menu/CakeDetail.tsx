@@ -29,7 +29,7 @@ function CakeDetail() {
       quantity,
       totalPrice,
     };
-    console.log(newItem);
+
     dispatch(addItem(newItem));
   }
 
