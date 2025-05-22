@@ -1,4 +1,5 @@
 import { CartItem } from "./cartSlice";
+import { cakes } from "../../data";
 
 type CartItemRowProps = {
   item: CartItem;
@@ -6,10 +7,13 @@ type CartItemRowProps = {
 };
 
 function CartItemRow({ item, onDelete }: CartItemRowProps) {
+  const cake = cakes.find((cake) => cake.id === item.id);
+  const imageUrl = cake?.image;
+  console.log(item);
   return (
     <li key={item.id} className="flex gap-4 items-start border-b pb-3 text-sm">
       <img
-        src="/assets/cakes/image-waffle-desktop.jpg"
+        src={imageUrl}
         alt={item.name}
         className="w-16 h-16 object-cover rounded"
       />
