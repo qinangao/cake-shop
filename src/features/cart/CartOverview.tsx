@@ -1,10 +1,10 @@
 import { X } from "lucide-react";
 import Button from "../../UI/components/Button";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getTotalCartPrice } from "./cartSlice";
 import { CartItem } from "./cartSlice";
 import CartItemRow from "./CartItemRow";
+import EmptyCart from "../../UI/components/EmptyCart";
 
 interface CartOverviewProps {
   cart: CartItem[];
@@ -26,15 +26,7 @@ function CartOverview({ cart, setIsOpen }: CartOverviewProps) {
         </button>
       </div>
       {cart.length === 0 ? (
-        <div className="text-center text-gray-600 mt-10">
-          <p className="text-lg font-medium">Your cart is empty.</p>
-          <Link
-            to="/menu" // or use <Link> if using React Router
-            className="mt-4 inline-block text-blue-600 hover:underline"
-          >
-            Go to Menu
-          </Link>
-        </div>
+        <EmptyCart />
       ) : (
         <>
           <ul
