@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { useSelector } from "react-redux";
 import { getCart } from "./cartSlice";
-import CartOverview from "./cartOverview";
+import CartOverview from "./CartOverview";
 
 function CartIcon() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,10 @@ function CartIcon() {
       {/* Cart Icon */}
       <div className="cursor-pointer text-3xl hidden md:block relative z-50">
         <button onClick={() => setIsOpen(true)} className="focus:outline-none">
-          <BsCart2 className="w-6 h-6 mb-1 mr-4" />
+          <BsCart2
+            className="w-6 h-6 mb-[2px] mr-4 cursor-pointer
+          "
+          />
         </button>
       </div>
 
