@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { CakeSize } from "../../data";
 
 export type CartItem = {
-  id: number; // cake id
+  cakeId: number; // cake id
   name: string;
   totalPrice: number;
   quantity: number;
@@ -22,6 +22,10 @@ const cartSlice = createSlice({
       //payload:newItem
       state.cart.push(action.payload);
     },
+    deleteItem(state, action) {
+      //payload:pizzaId
+      state.cart = state.cart.filter((item) => item.cakeId !== action.payload);
+    },
     clearCart(state) {
       state.cart = [];
     },
@@ -31,6 +35,12 @@ const cartSlice = createSlice({
 export const getCart = (state: stateType) => state.cart.cart;
 export const getTotalCartPrice = (state: stateType) =>
   state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+
+export const getTotalCartQuantity = (state: stateType) =>
+  state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
+
+export const getCurrentQuantityById = (id: number) => (state: stateType) =>
+  state.cart.cart.find((item) => item.cakeId === id)?.quantity ?? 0;
 
 export const { addItem, clearCart } = cartSlice.actions;
 
