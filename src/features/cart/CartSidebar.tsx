@@ -18,7 +18,7 @@ function CartIcon() {
     prevCartLength.current = cart.length;
   }, [cart.length]);
 
-  console.log(cart);
+  console.log(cart.length);
 
   return (
     <>

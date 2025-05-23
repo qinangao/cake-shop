@@ -22,8 +22,9 @@ function CakeDetail() {
   const totalPrice = (quantity ?? 0) * basePrice * priceMultiplier;
 
   function handleAddtoCart() {
+    if (!selectSize || !quantity) return;
     const newItem = {
-      id: cake?.id,
+      cakeId: cake?.id,
       name: cake?.name,
       size: selectSize,
       quantity,
