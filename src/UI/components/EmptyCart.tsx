@@ -24,5 +24,3 @@ function EmptyCart() {
 }
 
 export default EmptyCart;
-
-// icons8-cart-100.png
