@@ -7,11 +7,11 @@ type CartItemRowProps = {
 };
 
 function CartItemRow({ item, onDelete }: CartItemRowProps) {
-  const cake = cakes.find((cake) => cake.id === item.id);
+  const cake = cakes.find((cake) => cake.name === item.name);
   const imageUrl = cake?.image;
-  console.log(item);
+
   return (
-    <li key={item.id} className="flex gap-4 items-start border-b pb-3 text-sm">
+    <li className="flex gap-4 items-start border-b pb-3 text-sm">
       <img
         src={imageUrl}
         alt={item.name}
@@ -31,7 +31,7 @@ function CartItemRow({ item, onDelete }: CartItemRowProps) {
           <div className="flex flex-col items-center gap-5">
             <span className="font-bold text-base">${item.totalPrice}</span>
             <button
-              onClick={() => onDelete(item.id)}
+              onClick={() => onDelete(item.cakeId)}
               className="hover:underline hover:text-gray-500 text-xs"
             >
               Remove
