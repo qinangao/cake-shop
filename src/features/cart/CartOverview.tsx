@@ -34,7 +34,11 @@ function CartOverview({ cart, setIsOpen }: CartOverviewProps) {
         ace-y-3 flex-grow overflow-y-auto"
           >
             {cart.map((item) => (
-              <CartItemRow key={item.id} item={item} onDelete={handleDelete} />
+              <CartItemRow
+                key={`${item.name}-${item.size}`}
+                item={item}
+                onDelete={handleDelete}
+              />
             ))}
           </ul>
 
