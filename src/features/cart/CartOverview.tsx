@@ -49,7 +49,12 @@ function CartOverview({ cart, setIsOpen }: CartOverviewProps) {
               Total: ${totalCartPrice}
             </div>
             <div className="flex justify-between">
-              <Button bgColor="black" textColor="white" width="40%">
+              <Button
+                bgColor="black"
+                textColor="white"
+                width="40%"
+                to="/checkout"
+              >
                 Check Out
               </Button>
               <Button isHover={false} width="40%" onClick={handleClearCart}>
