@@ -1,8 +1,8 @@
 import { X } from "lucide-react";
 import Button from "../../UI/components/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getTotalCartPrice } from "./cartSlice";
-import { CartItem } from "./cartSlice";
+import { CartItem, clearCart } from "./cartSlice";
 import CartItemRow from "./CartItemRow";
 import EmptyCart from "../../UI/components/EmptyCart";
 
@@ -12,9 +12,12 @@ interface CartOverviewProps {
 }
 
 function CartOverview({ cart, setIsOpen }: CartOverviewProps) {
+  const dispatch = useDispatch();
   const totalCartPrice = useSelector(getTotalCartPrice);
 
-  function handleDelete() {}
+  function handleClearCart() {
+    dispatch(clearCart());
+  }
   console.log(cart);
 
   return (
@@ -35,9 +38,8 @@ function CartOverview({ cart, setIsOpen }: CartOverviewProps) {
           >
             {cart.map((item) => (
               <CartItemRow
-                key={`${item.name}-${item.size}`}
+                key={`${item.name}-${item.size}-${item.quantity}`}
                 item={item}
-                onDelete={handleDelete}
               />
             ))}
           </ul>
@@ -46,9 +48,14 @@ function CartOverview({ cart, setIsOpen }: CartOverviewProps) {
             <div className="font-semibold text-right text-3xl mb-8">
               Total: ${totalCartPrice}
             </div>
-            <Button bgColor="black" textColor="white" width="100%">
-              Check Out
-            </Button>
+            <div className="flex justify-between">
+              <Button bgColor="black" textColor="white" width="40%">
+                Check Out
+              </Button>
+              <Button isHover={false} width="40%" onClick={handleClearCart}>
+                Clear Cart
+              </Button>
+            </div>
           </div>
         </>
       )}
