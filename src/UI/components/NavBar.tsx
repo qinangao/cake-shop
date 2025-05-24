@@ -2,7 +2,7 @@ import { JSX, useState } from "react";
 import Button from "./Button";
 import { Link, NavLink } from "react-router-dom";
 import { HiOutlineUser } from "react-icons/hi";
-import CartSidebar from "../../features/cart/CartSideBar";
+import CartSidebar from "../../features/cart/CartSidebar";
 
 export default function NavBar(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +55,7 @@ export default function NavBar(): JSX.Element {
               </li>
             ))}
 
-            <li className="block md:hidden">
+            <li className="md:hidden flex justify-center">
               <Button to="/login">Login</Button>
             </li>
           </ul>
