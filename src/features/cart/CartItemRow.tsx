@@ -1,14 +1,19 @@
-import { CartItem } from "./cartSlice";
+import { CartItem, deleteItem } from "./cartSlice";
 import { cakes } from "../../data";
+import { useDispatch } from "react-redux";
 
 type CartItemRowProps = {
   item: CartItem;
-  onDelete: (id: string | number) => void;
 };
 
-function CartItemRow({ item, onDelete }: CartItemRowProps) {
+function CartItemRow({ item }: CartItemRowProps) {
+  const dispatch = useDispatch();
   const cake = cakes.find((cake) => cake.name === item.name);
   const imageUrl = cake?.image;
+
+  function handleDeleteItem() {
+    dispatch(deleteItem({ cakeId: item.cakeId, size: item.size }));
+  }
 
   return (
     <li className="flex gap-4 items-start border-b pb-3 text-sm">
@@ -31,7 +36,7 @@ function CartItemRow({ item, onDelete }: CartItemRowProps) {
           <div className="flex flex-col items-center gap-5">
             <span className="font-bold text-base">${item.totalPrice}</span>
             <button
-              onClick={() => onDelete(item.cakeId)}
+              onClick={handleDeleteItem}
               className="hover:underline hover:text-gray-500 text-xs"
             >
               Remove
