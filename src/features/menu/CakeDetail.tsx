@@ -91,6 +91,8 @@ function CakeDetail() {
               height="40px"
               bgColor="black"
               textColor="white"
+              disabled={!selectSize || !quantity}
+              to="/checkout"
             >
               Order Now
             </Button>
