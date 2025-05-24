@@ -3,12 +3,13 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { useSelector } from "react-redux";
-import { getCart } from "./cartSlice";
+import { getCart, getTotalCartQuantity } from "./cartSlice";
 import CartOverview from "./CartOverview";
 
 function CartIcon() {
   const [isOpen, setIsOpen] = useState(false);
   const cart = useSelector(getCart);
+  const totalCartQuantity = useSelector(getTotalCartQuantity);
 
   const prevCartLength = useRef(cart.length);
   useEffect(() => {
@@ -17,8 +18,6 @@ function CartIcon() {
     }
     prevCartLength.current = cart.length;
   }, [cart.length]);
-
-  console.log(cart.length);
 
   return (
     <>
@@ -29,6 +28,14 @@ function CartIcon() {
             className="w-6 h-6 mb-[2px] mr-4 cursor-pointer
           "
           />
+          {totalCartQuantity !== 0 && (
+            <span
+              className="absolute top-[-5px] right-0 w-5 h-5 rounded-full bg-red-400 text-white text-[14px] 
+                 flex items-center justify-center"
+            >
+              {totalCartQuantity}
+            </span>
+          )}
         </button>
       </div>
 
