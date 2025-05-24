@@ -6,6 +6,7 @@ import Contact from "./UI/pages/Contact";
 import AppLayout from "./UI/AppLayout";
 import Login from "./features/user/Login";
 import CakeDetail from "./features/menu/CakeDetail";
+import OrderOverview from "./features/order/OrderOverview";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: "/cake/:id", element: <CakeDetail /> },
       { path: "/contactus", element: <Contact /> },
       { path: "/login", element: <Login /> },
+      { path: "/checkout", element: <OrderOverview /> },
     ],
   },
 ]);
