@@ -1,13 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { cakes } from "../../data.ts";
 import LinkButton from "../../UI/components/LinkButton.tsx";
 import Button from "../../UI/components/Button.tsx";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../cart/cartSlice.ts";
+import { setAutoOpenCart } from "../../utilities/cartSideBarControl.ts";
 
 function CakeDetail() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const cake = cakes.find((c) => c.id === Number(id));
 
@@ -23,6 +25,7 @@ function CakeDetail() {
 
   function handleAddtoCart() {
     if (!selectSize || !quantity) return;
+    setAutoOpenCart(true);
     const newItem = {
       cakeId: cake?.id,
       name: cake?.name,
@@ -32,6 +35,20 @@ function CakeDetail() {
     };
 
     dispatch(addItem(newItem));
+  }
+  function handleOrderNow() {
+    if (!selectSize || !quantity) return;
+    setAutoOpenCart(false);
+    const newItem = {
+      cakeId: cake?.id,
+      name: cake?.name,
+      size: selectSize,
+      quantity,
+      totalPrice,
+    };
+
+    dispatch(addItem(newItem));
+    navigate("/checkout");
   }
 
   return (
@@ -97,6 +114,7 @@ function CakeDetail() {
               textColor="white"
               disabled={!selectSize || !quantity}
               to="/checkout"
+              onClick={handleOrderNow}
             >
               Order Now
             </Button>
