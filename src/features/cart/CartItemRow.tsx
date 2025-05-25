@@ -2,7 +2,7 @@ import { CartItem, deleteItem } from "./cartSlice";
 import { cakes } from "../../data";
 import { useDispatch } from "react-redux";
 
-type CartItemRowProps = {
+export type CartItemRowProps = {
   item: CartItem;
 };
 
