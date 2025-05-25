@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
 import { getCart, getTotalCartQuantity } from "./cartSlice";
 import CartOverview from "./CartOverview";
+import { shouldAutoOpenCart } from "../../utilities/cartSideBarControl";
 
 function CartIcon() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,7 @@ function CartIcon() {
 
   const prevCartLength = useRef(cart.length);
   useEffect(() => {
-    if (cart.length > prevCartLength.current) {
+    if (shouldAutoOpenCart() && cart.length > prevCartLength.current) {
       setIsOpen(true);
     }
     prevCartLength.current = cart.length;
