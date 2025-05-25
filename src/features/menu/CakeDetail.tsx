@@ -37,8 +37,12 @@ function CakeDetail() {
   return (
     <div className="max-w-[1440px] mx-auto py-10 px-4 md:px-20 lg:py-15">
       <LinkButton linkName="← Go Back Menu" />
-      <div className="flex flex-col gap-4 md:flex-row lg:gap-[50px]">
-        <img src={cake.image} alt={cake.name} className="rounded-xl mb-4" />
+      <div className="flex flex-col gap-4 lg:flex-row lg:gap-[50px]">
+        <img
+          src={cake.image}
+          alt={cake.name}
+          className="rounded-xl mb-4 lg:w-[40%]"
+        />
         <div className="flex flex-col gap-6">
           <h1 className="text-2xl font-bold mb-4 md:text-4xl">{cake.name}</h1>
           <p className="text-2xl md:text-4xl font-bold">
