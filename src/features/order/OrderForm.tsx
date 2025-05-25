@@ -11,7 +11,7 @@ function OrderForm() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-gray-50 rounded-lg shadow-md flex flex-col items-center">
+    <div className="p-6 bg-gray-50 rounded-lg shadow-md flex flex-col items-center lg:items-start">
       <h2 className="text-2xl font-semibold mb-6 text-center md:text-left">
         Quick Checkout (No Sign-In Needed)
       </h2>

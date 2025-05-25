@@ -1,27 +1,42 @@
+import { useSelector } from "react-redux";
+import Button from "../../UI/components/Button";
+import OrderItemRow from "./OrderItemRow";
+import { getCart, getTotalCartPrice } from "../cart/cartSlice";
+
 function OrderSummary() {
+  const cart = useSelector(getCart);
+  const totalCartPrice = useSelector(getTotalCartPrice);
+
+  console.log(cart);
   return (
-    <div className="max-w-lg mx-auto p-6 bg-gray-50 rounded-lg shadow-md flex flex-col items-center">
+    <div className="p-6 bg-gray-50 rounded-lg shadow-md flex flex-col">
       <h2 className="text-2xl font-semibold mb-6 text-center md:text-left">
         Order summary
       </h2>
-      <ul>
-        <li>
-          <div className="flex justify-center border-b-1 pb-4 px-6">
-            <img
-              src="/assets/cakes/image-6.jpg"
-              alt="order-image"
-              className="w-15"
-            />
-            <div className="flex flex-col items-start justify-between jus px-5">
-              <p className="font-medium">
-                Lemon Meringue Pie<span className="px-1 font-mono">x2</span>
-              </p>
-              <p>Size: 6" itches</p>
-            </div>
-            <p className="pl-10 text-xl pt-4">$14</p>
+      {cart.length === 0 ? (
+        <p className="text-center font-bold text-3xl p-7">No orders found.</p>
+      ) : (
+        <>
+          <ul>
+            {cart.map((item) => (
+              <OrderItemRow
+                key={`${item.name}-${item.size}-${item.quantity}`}
+                item={item}
+              />
+            ))}
+          </ul>
+          <div className="flex justify-between items-center py-7">
+            <p className="text-2xl">Total:</p>
+            <p className="text-2xl font-semibold">${totalCartPrice}</p>
           </div>
-        </li>
-      </ul>
+
+          <div className="mt-auto">
+            <Button width="100%" bgColor="black" textColor="white">
+              Place Order
+            </Button>
+          </div>
+        </>
+      )}
     </div>
   );
 }
