@@ -48,7 +48,7 @@ function Button({
   const scaleClass =
     isHover && hoverScale && !disabled ? `hover:scale-${hoverScale}` : "";
 
-  const commonClasses = `border-2 border-black px-3 rounded-xl flex items-center justify-center cursor-pointer transform transition-transform ${scaleClass} ${className}`;
+  const commonClasses = `border-1 border-black px-3 rounded-xl flex items-center justify-center cursor-pointer transform transition-transform ${scaleClass} ${className}`;
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     if (isHover && !disabled) {
