@@ -1,14 +1,19 @@
-import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useCustomerInfo } from "./useCustomerInfo";
 
 function OrderForm() {
-  const [collectDate, setCollectDate] = useState<Date | null>(new Date());
-
-  const filterPassedTime = (time: Date) => {
-    const currentDate = new Date();
-    return currentDate.getTime() < time.getTime();
-  };
+  const {
+    collectDate,
+    setCollectDate,
+    name,
+    setName,
+    email,
+    setEmail,
+    contactNumber,
+    setContactNumber,
+    filterPassedTime,
+  } = useCustomerInfo();
 
   return (
     <div className="p-6 bg-gray-50 rounded-lg shadow-md flex flex-col items-center lg:items-start">
@@ -19,25 +24,25 @@ function OrderForm() {
         <div className="flex flex-col md:flex-row gap-5">
           <input
             type="text"
-            placeholder="First Name"
-            className="flex-1 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="flex-1 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
           />
         </div>
         <input
           type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Email address"
           className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           required
         />
         <input
           type="tel"
+          value={contactNumber}
+          onChange={(e) => setContactNumber(e.target.value)}
           placeholder="Contact number"
           className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           required
