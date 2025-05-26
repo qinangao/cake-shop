@@ -15,14 +15,16 @@ function OrderInfo() {
       total: 0,
     };
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center px-3 ">
       <div className="text-center pt-10">
         <div className="flex items-center justify-center gap-2">
           <img src="/assets/icons/icons8-approve.svg" alt="" />{" "}
-          <h1 className="text-3xl font-bold">Your Order Is Confirmed</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">
+            Your Order Is Confirmed
+          </h1>
         </div>
 
-        <div className="text-lg py-4 leading-[40px]">
+        <div className="md:text-lg py-4 leading-[40px]">
           <p>
             Order number: <strong>{orderId}</strong>
           </p>
@@ -40,8 +42,8 @@ function OrderInfo() {
           </p>
         </div>
       </div>
-      <div className="flex flex-col rounded-2xl justify-center w-[40%] border-1 border-gray-300 py-4 px-8 my-6">
-        <h2 className="text-2xl">Order summary</h2>
+      <div className="flex flex-col rounded-2xl justify-center  lg:w-[40%] border-1 border-gray-300 py-4 md:px-8 my-6">
+        <h2 className="text-xl md:text-2xl">Order summary</h2>
         <ul className=" px-3 my-4">
           {orderItems.map((item) => (
             <OrderItemRow
@@ -50,7 +52,7 @@ function OrderInfo() {
             />
           ))}
         </ul>
-        <div className="text-2xl flex justify-between">
+        <div className="text-xl md:text-2xl flex justify-between">
           <p>Total: </p>
           <p>${total}</p>
         </div>

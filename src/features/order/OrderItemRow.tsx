@@ -19,7 +19,7 @@ function OrderItemRow({ item }: CartItemRowProps) {
             <p>Size: {item.size}</p>
           </div>
         </div>
-        <p className="pl-10 text-xl pt-4">$ {item.totalPrice}</p>
+        <p className="pl-8 text-xl pt-4">$ {item.totalPrice}</p>
       </div>
     </li>
   );
