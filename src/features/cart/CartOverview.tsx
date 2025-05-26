@@ -18,7 +18,7 @@ function CartOverview({ cart, setIsOpen }: CartOverviewProps) {
   function handleClearCart() {
     dispatch(clearCart());
   }
-  // console.log(cart);
+  console.log(cart);
 
   return (
     <div className="flex flex-col h-full py-3">

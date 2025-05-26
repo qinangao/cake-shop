@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../cart/cartSlice.ts";
 import { setAutoOpenCart } from "../../utilities/cartSideBarControl.ts";
+import Counter from "../../UI/components/Counter.tsx";
 
 function CakeDetail() {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ function CakeDetail() {
   const cake = cakes.find((c) => c.id === Number(id));
 
   const [selectSize, setSelectSize] = useState<string | null>(null);
-  const [quantity, setQuantity] = useState<number | null>(null);
+  const [quantity, setQuantity] = useState<number>(1);
 
   if (!cake) return <div>Cake not found</div>;
 
@@ -97,6 +98,7 @@ function CakeDetail() {
             onChange={(e) => setQuantity(Number(e.target.value))}
             required
           />
+          <Counter value={quantity} cake={cake} setQuantity={setQuantity} />
           <div className="flex gap-5">
             <Button
               hoverScale="100"
