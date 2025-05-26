@@ -7,6 +7,8 @@ import AppLayout from "./UI/AppLayout";
 import Login from "./features/user/Login";
 import CakeDetail from "./features/menu/CakeDetail";
 import OrderOverview from "./features/order/OrderOverview";
+import { CustomerInfoProvider } from "./features/order/useCustomerInfo";
+import OrderConfirmation from "./UI/pages/OrderConfirmation";
 
 const router = createBrowserRouter([
   {
@@ -19,12 +21,17 @@ const router = createBrowserRouter([
       { path: "/contactus", element: <Contact /> },
       { path: "/login", element: <Login /> },
       { path: "/checkout", element: <OrderOverview /> },
+      { path: "/confirmation", element: <OrderConfirmation /> },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <CustomerInfoProvider>
+      <RouterProvider router={router} />
+    </CustomerInfoProvider>
+  );
 }
 
 export default App;
