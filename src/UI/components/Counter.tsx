@@ -8,12 +8,14 @@ type CounterProps = {
   value: number;
   cake: { id: number };
   setQuantity?: (quantity: number) => void;
+  quantity: number;
 };
 
-function Counter({ value, cake, setQuantity }: CounterProps) {
+function Counter({ value, cake, setQuantity, quantity }: CounterProps) {
   const dispatch = useDispatch();
 
   function handleDecrease() {
+    if (quantity < 1) return;
     dispatch(decreaseItemQuantity(cake.id));
     if (setQuantity) setQuantity(value - 1);
   }
