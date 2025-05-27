@@ -19,10 +19,10 @@ function CakeDetail() {
 
   if (!cake) return <div>Cake not found</div>;
 
-  const basePrice = cake.unitPrice;
   const priceMultiplier = selectSize === "8-inch" ? 1.5 : 1;
+  const basePrice = cake.unitPrice * priceMultiplier;
 
-  const totalPrice = (quantity ?? 0) * basePrice * priceMultiplier;
+  const totalPrice = (quantity ?? 0) * basePrice;
 
   function handleAddtoCart() {
     if (!selectSize || !quantity) return;
@@ -32,11 +32,13 @@ function CakeDetail() {
       name: cake?.name,
       size: selectSize,
       quantity,
+      basePrice,
       totalPrice,
     };
-
+    console.log(newItem);
     dispatch(addItem(newItem));
   }
+
   function handleOrderNow() {
     if (!selectSize || !quantity) return;
     setAutoOpenCart(false);
@@ -45,6 +47,7 @@ function CakeDetail() {
       name: cake?.name,
       size: selectSize,
       quantity,
+      basePrice,
       totalPrice,
     };
 
@@ -90,15 +93,20 @@ function CakeDetail() {
             ))}
           </select>
           <label className="text-xl font-bold">Quantity:</label>
-          <input
+          {/* <input
             type="number"
             min="1"
             className="border-1 px-2 py-1 lg:w-[30%]"
             value={quantity ?? ""}
             onChange={(e) => setQuantity(Number(e.target.value))}
             required
+          /> */}
+          <Counter
+            value={quantity}
+            cake={cake}
+            setQuantity={setQuantity}
+            quantity={quantity}
           />
-          <Counter value={quantity} cake={cake} setQuantity={setQuantity} />
           <div className="flex gap-5">
             <Button
               hoverScale="100"
