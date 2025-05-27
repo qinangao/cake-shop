@@ -4,6 +4,7 @@ import { CakeSize } from "../../data";
 export type CartItem = {
   cakeId: number; // cake id
   name: string;
+  basePrice: number;
   totalPrice: number;
   quantity: number;
   size?: CakeSize;
@@ -49,7 +50,7 @@ const cartSlice = createSlice({
       if (selecteditem) {
         selecteditem.quantity++;
         selecteditem.totalPrice =
-          selecteditem.quantity * selecteditem.totalPrice;
+          selecteditem.quantity * selecteditem.basePrice;
       }
     },
     decreaseItemQuantity(state, action) {
@@ -60,7 +61,7 @@ const cartSlice = createSlice({
       if (selecteditem) {
         selecteditem.quantity--;
         selecteditem.totalPrice =
-          selecteditem.quantity * selecteditem.totalPrice;
+          selecteditem.quantity * selecteditem.basePrice;
 
         if (selecteditem.quantity === 0)
           cartSlice.caseReducers.deleteItem(state, action);
