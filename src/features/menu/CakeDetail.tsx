@@ -7,53 +7,71 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../cart/cartSlice.ts";
 import { setAutoOpenCart } from "../../utilities/cartSideBarControl.ts";
 import Counter from "../../UI/components/Counter.tsx";
+import useItemDetail, { ItemDetailHook } from "../../hooks/useItemDetail.ts";
 
 function CakeDetail() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
-  const cake = cakes.find((c) => c.id === Number(id));
+  const detail = useItemDetail();
 
-  const [selectSize, setSelectSize] = useState<CakeSize | "">("");
-  const [quantity, setQuantity] = useState<number>(1);
-
-  if (!cake) return <div>Cake not found</div>;
-
-  const priceMultiplier = selectSize === "8-inch" ? 1.5 : 1;
-  const basePrice = cake.unitPrice * priceMultiplier;
-
-  const totalPrice = (quantity ?? 0) * basePrice;
-
-  function handleAddtoCart() {
-    if (!selectSize || !quantity) return;
-    setAutoOpenCart(true);
-    const newItem = {
-      cakeId: cake?.id,
-      name: cake?.name,
-      size: selectSize as CakeSize,
-      quantity,
-      basePrice,
-      totalPrice,
-    };
-    console.log(newItem);
-    dispatch(addItem(newItem));
+  if (!detail) {
+    return <p>Cake not found.</p>;
   }
 
-  function handleOrderNow() {
-    if (!selectSize || !quantity) return;
-    setAutoOpenCart(false);
-    const newItem = {
-      cakeId: cake?.id,
-      name: cake?.name,
-      size: selectSize as CakeSize,
-      quantity,
-      basePrice,
-      totalPrice,
-    };
+  const {
+    cake,
+    handleAddtoCart,
+    handleOrderNow,
+    setSelectSize,
+    setQuantity,
+    quantity,
+    selectSize,
+  } = detail;
 
-    dispatch(addItem(newItem));
-    navigate("/checkout");
-  }
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+
+  // const { id } = useParams<{ id: string }>();
+  // const cake = cakes.find((c) => c.id === Number(id));
+
+  // const [selectSize, setSelectSize] = useState<CakeSize | null>(null);
+  // const [quantity, setQuantity] = useState<number>(1);
+
+  // if (!cake || !selectSize) return;
+
+  // const priceMultiplier = selectSize === "8-inch" ? 1.5 : 1;
+  // const basePrice = cake.unitPrice * priceMultiplier;
+
+  // const totalPrice = (quantity ?? 0) * basePrice;
+
+  // function handleAddtoCart() {
+  //   if (!selectSize || !quantity) return;
+  //   setAutoOpenCart(true);
+  //   const newItem = {
+  //     cakeId: cake?.id,
+  //     name: cake?.name,
+  //     size: selectSize as CakeSize,
+  //     quantity,
+  //     basePrice,
+  //     totalPrice,
+  //   };
+  //   console.log(newItem);
+  //   dispatch(addItem(newItem));
+  // }
+
+  // function handleOrderNow() {
+  //   if (!selectSize || !quantity) return;
+  //   setAutoOpenCart(false);
+  //   const newItem = {
+  //     cakeId: cake?.id,
+  //     name: cake?.name,
+  //     size: selectSize as CakeSize,
+  //     quantity,
+  //     basePrice,
+  //     totalPrice,
+  //   };
+
+  //   dispatch(addItem(newItem));
+  //   navigate("/checkout");
+  // }
 
   return (
     <div className="max-w-[1440px] mx-auto py-10 px-4 md:px-20 lg:py-15">
@@ -76,8 +94,8 @@ function CakeDetail() {
             id="cakeSize"
             required
             className="border-1 px-2 py-1 lg:w-[30%]"
-            value={selectSize ?? ""}
-            onChange={(e) => setSelectSize(e.target.value as "" | CakeSize)}
+            value={selectSize}
+            onChange={(e) => setSelectSize(e.target.value as CakeSize | "")}
           >
             <option value="" disabled>
               Select the size
@@ -99,7 +117,7 @@ function CakeDetail() {
             cake={cake}
             setQuantity={setQuantity}
             quantity={quantity}
-            selectSize={selectSize}
+            selectSize={selectSize as CakeSize}
           />
           <div className="flex gap-5">
             <Button
