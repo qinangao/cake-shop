@@ -1,6 +1,7 @@
 import { CartItem, deleteItem } from "./cartSlice";
 import { cakes } from "../../data";
 import { useDispatch } from "react-redux";
+// import Counter from "../../UI/components/Counter";
 
 export type CartItemRowProps = {
   item: CartItem;
@@ -15,6 +16,7 @@ function CartItemRow({ item }: CartItemRowProps) {
     dispatch(deleteItem({ cakeId: item.cakeId, size: item.size }));
   }
 
+  if (!cake) return;
   return (
     <li className="flex gap-4 items-start border-b pb-3 text-sm">
       <img
@@ -32,6 +34,12 @@ function CartItemRow({ item }: CartItemRowProps) {
             <p>
               <span className="font-semibold">Quantity:</span> {item.quantity}
             </p>
+            {/* <Counter
+              value={item.quantity}
+              cake={{ id: cake.id }}
+              quantity={item.quantity}
+              selectSize={item.size}
+            /> */}
           </div>
           <div className="flex flex-col items-center gap-5">
             <span className="font-bold text-base">${item.totalPrice}</span>

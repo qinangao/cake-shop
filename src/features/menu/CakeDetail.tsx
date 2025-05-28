@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { cakes } from "../../data.ts";
+import { cakes, CakeSize } from "../../data.ts";
 import LinkButton from "../../UI/components/LinkButton.tsx";
 import Button from "../../UI/components/Button.tsx";
 import { useState } from "react";
@@ -14,7 +14,7 @@ function CakeDetail() {
   const { id } = useParams<{ id: string }>();
   const cake = cakes.find((c) => c.id === Number(id));
 
-  const [selectSize, setSelectSize] = useState<string | null>(null);
+  const [selectSize, setSelectSize] = useState<CakeSize | "">("");
   const [quantity, setQuantity] = useState<number>(1);
 
   if (!cake) return <div>Cake not found</div>;
@@ -30,7 +30,7 @@ function CakeDetail() {
     const newItem = {
       cakeId: cake?.id,
       name: cake?.name,
-      size: selectSize,
+      size: selectSize as CakeSize,
       quantity,
       basePrice,
       totalPrice,
@@ -45,7 +45,7 @@ function CakeDetail() {
     const newItem = {
       cakeId: cake?.id,
       name: cake?.name,
-      size: selectSize,
+      size: selectSize as CakeSize,
       quantity,
       basePrice,
       totalPrice,
@@ -77,7 +77,7 @@ function CakeDetail() {
             required
             className="border-1 px-2 py-1 lg:w-[30%]"
             value={selectSize ?? ""}
-            onChange={(e) => setSelectSize(e.target.value)}
+            onChange={(e) => setSelectSize(e.target.value as "" | CakeSize)}
           >
             <option value="" disabled>
               Select the size
@@ -93,19 +93,13 @@ function CakeDetail() {
             ))}
           </select>
           <label className="text-xl font-bold">Quantity:</label>
-          {/* <input
-            type="number"
-            min="1"
-            className="border-1 px-2 py-1 lg:w-[30%]"
-            value={quantity ?? ""}
-            onChange={(e) => setQuantity(Number(e.target.value))}
-            required
-          /> */}
+
           <Counter
             value={quantity}
             cake={cake}
             setQuantity={setQuantity}
             quantity={quantity}
+            selectSize={selectSize}
           />
           <div className="flex gap-5">
             <Button

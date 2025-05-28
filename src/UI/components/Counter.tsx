@@ -3,25 +3,33 @@ import {
   decreaseItemQuantity,
   increaseItemQuantity,
 } from "../../features/cart/cartSlice";
+import { CakeSize } from "../../data";
 
 type CounterProps = {
   value: number;
   cake: { id: number };
   setQuantity?: (quantity: number) => void;
   quantity: number;
+  selectSize: CakeSize;
 };
 
-function Counter({ value, cake, setQuantity, quantity }: CounterProps) {
+function Counter({
+  value,
+  cake,
+  setQuantity,
+  quantity,
+  selectSize,
+}: CounterProps) {
   const dispatch = useDispatch();
 
   function handleDecrease() {
-    if (quantity < 1) return;
+    if (quantity <= 1) return;
     dispatch(decreaseItemQuantity(cake.id));
     if (setQuantity) setQuantity(value - 1);
   }
 
   function handleIncrease() {
-    dispatch(increaseItemQuantity(cake.id));
+    dispatch(increaseItemQuantity({ cakeId: cake.id, selectSize }));
     if (setQuantity) setQuantity(value + 1);
   }
 
