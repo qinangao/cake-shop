@@ -7,7 +7,7 @@ import AppLayout from "./UI/AppLayout";
 import Login from "./features/user/Login";
 import CakeDetail from "./features/menu/CakeDetail";
 import OrderOverview from "./features/order/OrderOverview";
-import { CustomerInfoProvider } from "./features/order/useCustomerInfo";
+import { CustomerInfoProvider } from "./hooks/useCustomerInfo";
 import OrderConfirmation from "./UI/pages/OrderConfirmation";
 
 const router = createBrowserRouter([

@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { formatNiceDate, generateShortOrderId } from "../../utilities/helper";
-import { useCustomerInfo } from "./useCustomerInfo";
+import { useCustomerInfo } from "../../hooks/useCustomerInfo";
 import OrderItemRow from "./OrderItemRow";
 import { CartItem } from "../cart/cartSlice";
 

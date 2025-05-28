@@ -1,6 +1,6 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useCustomerInfo } from "./useCustomerInfo";
+import { useCustomerInfo } from "../../hooks/useCustomerInfo";
 
 function OrderForm() {
   const {

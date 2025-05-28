@@ -3,7 +3,7 @@ import Button from "../../UI/components/Button";
 import OrderItemRow from "./OrderItemRow";
 import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
 import { useNavigate } from "react-router-dom";
-import { useCustomerInfo } from "./useCustomerInfo";
+import { useCustomerInfo } from "../../hooks/useCustomerInfo";
 
 function OrderSummary() {
   const dispatch = useDispatch();
