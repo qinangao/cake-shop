@@ -7,7 +7,7 @@ export type CartItem = {
   basePrice: number;
   totalPrice: number;
   quantity: number;
-  size?: CakeSize;
+  size: CakeSize;
 };
 type stateType = { cart: { cart: CartItem[] } };
 
@@ -20,11 +20,11 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      //payload:newItem
-      const newItem = action.payload;
+      const newItem = { ...action.payload }; // <- Deep clone
       const existingItem = state.cart.find(
         (item) => item.cakeId === newItem.cakeId && item.size === newItem.size
       );
+
       if (existingItem) {
         existingItem.quantity += newItem.quantity;
         existingItem.totalPrice += newItem.totalPrice;
@@ -45,7 +45,9 @@ const cartSlice = createSlice({
     increaseItemQuantity(state, action) {
       //payload:cakeId
       const selecteditem = state.cart.find(
-        (item) => item.cakeId === action.payload
+        (item) =>
+          item.cakeId === action.payload.cakeId &&
+          item.size === action.payload.size
       );
       if (selecteditem) {
         selecteditem.quantity++;
@@ -56,7 +58,9 @@ const cartSlice = createSlice({
     decreaseItemQuantity(state, action) {
       //payload:cakeId
       const selecteditem = state.cart.find(
-        (item) => item.cakeId === action.payload
+        (item) =>
+          item.cakeId === action.payload.cakeId &&
+          item.size === action.payload.size
       );
       if (selecteditem) {
         selecteditem.quantity--;
