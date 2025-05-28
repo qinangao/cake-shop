@@ -1,6 +1,6 @@
 // cakesData.ts
 
-export type CakeSize = "6-inch" | "8-inch" | "";
+export type CakeSize = "6-inch" | "8-inch";
 
 export type Cake = {
   id: number;
