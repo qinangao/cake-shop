@@ -1,13 +1,8 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { cakes, CakeSize } from "../../data.ts";
 import LinkButton from "../../UI/components/LinkButton.tsx";
 import Button from "../../UI/components/Button.tsx";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addItem } from "../cart/cartSlice.ts";
-import { setAutoOpenCart } from "../../utilities/cartSideBarControl.ts";
 import Counter from "../../UI/components/Counter.tsx";
-import useItemDetail, { ItemDetailHook } from "../../hooks/useItemDetail.ts";
+import useItemDetail from "../../hooks/useItemDetail.ts";
+import { CakeSize } from "../../data.ts";
 
 function CakeDetail() {
   const detail = useItemDetail();
@@ -25,53 +20,6 @@ function CakeDetail() {
     quantity,
     selectSize,
   } = detail;
-
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-
-  // const { id } = useParams<{ id: string }>();
-  // const cake = cakes.find((c) => c.id === Number(id));
-
-  // const [selectSize, setSelectSize] = useState<CakeSize | null>(null);
-  // const [quantity, setQuantity] = useState<number>(1);
-
-  // if (!cake || !selectSize) return;
-
-  // const priceMultiplier = selectSize === "8-inch" ? 1.5 : 1;
-  // const basePrice = cake.unitPrice * priceMultiplier;
-
-  // const totalPrice = (quantity ?? 0) * basePrice;
-
-  // function handleAddtoCart() {
-  //   if (!selectSize || !quantity) return;
-  //   setAutoOpenCart(true);
-  //   const newItem = {
-  //     cakeId: cake?.id,
-  //     name: cake?.name,
-  //     size: selectSize as CakeSize,
-  //     quantity,
-  //     basePrice,
-  //     totalPrice,
-  //   };
-  //   console.log(newItem);
-  //   dispatch(addItem(newItem));
-  // }
-
-  // function handleOrderNow() {
-  //   if (!selectSize || !quantity) return;
-  //   setAutoOpenCart(false);
-  //   const newItem = {
-  //     cakeId: cake?.id,
-  //     name: cake?.name,
-  //     size: selectSize as CakeSize,
-  //     quantity,
-  //     basePrice,
-  //     totalPrice,
-  //   };
-
-  //   dispatch(addItem(newItem));
-  //   navigate("/checkout");
-  // }
 
   return (
     <div className="max-w-[1440px] mx-auto py-10 px-4 md:px-20 lg:py-15">
