@@ -11,6 +11,7 @@ type CounterProps = {
   setQuantity?: (quantity: number) => void;
   quantity: number;
   selectSize: CakeSize;
+  fontSize?: string;
 };
 
 function Counter({
@@ -19,31 +20,34 @@ function Counter({
   setQuantity,
   quantity,
   selectSize,
+  fontSize = "1.12rem",
 }: CounterProps) {
   const dispatch = useDispatch();
 
   function handleDecrease() {
     if (quantity <= 1) return;
-    dispatch(decreaseItemQuantity(cake.id));
+    dispatch(decreaseItemQuantity({ cakeId: cake.id, size: selectSize }));
     if (setQuantity) setQuantity(value - 1);
   }
 
   function handleIncrease() {
-    dispatch(increaseItemQuantity({ cakeId: cake.id, selectSize }));
+    dispatch(increaseItemQuantity({ cakeId: cake.id, size: selectSize }));
     if (setQuantity) setQuantity(value + 1);
   }
 
   return (
-    <div className="lg:w-[30%] py-1.5 px-10 border relative flex items-center justify-center">
+    <div className="lg:w-[30%]  py-1 px-10 border relative flex items-center justify-center">
       <button
-        className="absolute left-2 text-2xl cursor-pointer"
+        className="absolute left-2 text-[22px] cursor-pointer"
         onClick={handleDecrease}
       >
         −
       </button>
-      <span className="px-4 text-lg">{value}</span>
+      <span className="px-4" style={{ fontSize }}>
+        {value}
+      </span>
       <button
-        className="absolute right-2 text-2xl cursor-pointer"
+        className="absolute right-2 text-[22px] cursor-pointer"
         onClick={handleIncrease}
       >
         +

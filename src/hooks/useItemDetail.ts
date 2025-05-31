@@ -23,6 +23,7 @@ export function useItemDetail(): ItemDetailHook | undefined {
   const cake = cakes.find((c) => c.id === Number(id));
 
   const [selectSize, setSelectSize] = useState<CakeSize | "">("");
+
   const [quantity, setQuantity] = useState<number>(1);
 
   if (!cake) return;
