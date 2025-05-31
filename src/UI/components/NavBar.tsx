@@ -14,37 +14,42 @@ export default function NavBar(): JSX.Element {
     { label: "Contact Us", path: "/contactus" },
   ];
 
-  const menuBtnStyle: string =
-    "block md:hidden absolute right-5 top-5 w-[40px] cursor-pointer";
-
   const ulStyle: string = `${
     isOpen ? "flex" : "hidden"
-  } absolute  top-10 left-1/2 -translate-x-1/2 z-10 w-1/2 text-center flex-col bg-black text-white p-4 rounded-2xl gap-[20px] md:gap-[20px] lg:gap-[60px]
+  } absolute  top-10 left-1/2 -translate-x-1/2 z-10 w-1/2 text-center flex-col bg-black text-white p-4 rounded-2xl gap-[20px] md:gap-[20px] lg:gap-[60px] lg:pr-[100px]
               md:static  md:top-auto md:left-auto md:translate-x-0 md:z-auto md:flex md:flex-row md:bg-transparent md:w-full md:text-black md:p-0 md:rounded-none`;
 
   return (
     <header className="bg-white h-[80px] w-full">
-      <nav className="flex justify-between items-center  h-full px-4">
-        <h1 className="text-4xl font-bold">The Cake Lab</h1>
-        <div className="flex  md:w-auto items-center nav__logo__container">
-          {!isOpen && (
+      <nav className="relative flex items-center justify-between h-full px-4">
+        {/* LEFT: Menu Button (only on small screens) */}
+        <div className="block md:hidden">
+          {!isOpen ? (
             <img
-              className={menuBtnStyle}
+              className="w-[30px] cursor-pointer"
               src="/assets/icons/icons8-menu.svg"
-              alt="open btn"
+              alt="open menu"
               onClick={() => setIsOpen(true)}
             />
-          )}
-          {isOpen && (
+          ) : (
             <img
-              className={menuBtnStyle}
+              className="w-[30px] cursor-pointer"
               src="/assets/icons/icons8-close.svg"
-              alt="close btn"
+              alt="close menu"
               onClick={() => setIsOpen(false)}
             />
           )}
         </div>
-        <div>
+
+        {/* CENTER: Logo */}
+        <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
+          <h1 className="text-2xl md:text-4xl font-bold text-center">
+            The Cake Lab
+          </h1>
+        </div>
+
+        {/* RIGHT: Nav items and cart/user icons */}
+        <div className="flex items-center gap-4 ml-auto">
           <ul className={ulStyle}>
             {navItems.map((item) => (
               <li
@@ -54,16 +59,18 @@ export default function NavBar(): JSX.Element {
                 <Link to={item.path}>{item.label}</Link>
               </li>
             ))}
-
+            {/* Mobile login button inside menu */}
             <li className="md:hidden flex justify-center">
               <Button to="/login">Login</Button>
             </li>
           </ul>
-        </div>
-        <div className="flex items-center justify-center">
-          <NavLink className="hidden md:block cursor-pointer" to="/login">
-            <HiOutlineUser className="w-6 h-6 mr-7" />
+
+          {/* Desktop login icon */}
+          <NavLink className="hidden md:block" to="/login">
+            <HiOutlineUser className="w-6 h-6" />
           </NavLink>
+
+          {/* Cart Sidebar */}
           <CartSidebar />
         </div>
       </nav>
