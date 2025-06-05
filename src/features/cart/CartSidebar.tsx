@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { getCart, getTotalCartQuantity } from "./cartSlice";
 import CartOverview from "./CartOverview";
 import { shouldAutoOpenCart } from "../../utilities/cartSideBarControl";
+import { LiaShoppingCartSolid } from "react-icons/lia";
 
 function CartIcon() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,8 +26,8 @@ function CartIcon() {
       {/* Cart Icon */}
       <div className="cursor-pointer text-3xl relative z-50">
         <button onClick={() => setIsOpen(true)} className="focus:outline-none">
-          <BsCart2
-            className="md:w-6 md:h-6 mb-[2px] md:mr-4 cursor-pointer
+          <LiaShoppingCartSolid
+            className="md:w-6 md:h-6 md:mr-4 cursor-pointer
           "
           />
           {totalCartQuantity !== 0 && (
