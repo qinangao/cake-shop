@@ -6,9 +6,9 @@ function OrderForm() {
   const {
     collectDate,
     setCollectDate,
-    name,
+    inputName,
     setName,
-    email,
+    inputEmail,
     setEmail,
     contactNumber,
     setContactNumber,
@@ -25,7 +25,7 @@ function OrderForm() {
           <input
             type="text"
             placeholder="Name"
-            value={name}
+            value={inputName}
             onChange={(e) => setName(e.target.value)}
             className="flex-1 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
@@ -33,7 +33,7 @@ function OrderForm() {
         </div>
         <input
           type="email"
-          value={email}
+          value={inputEmail}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email address"
           className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
