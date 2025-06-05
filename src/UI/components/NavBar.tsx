@@ -1,8 +1,9 @@
 import { JSX, useState } from "react";
-import Button from "./Button";
-import { Link, NavLink } from "react-router-dom";
-import { HiOutlineUser } from "react-icons/hi";
+
 import CartSidebar from "../../features/cart/CartSidebar";
+
+import User from "../../features/user/User";
+import { Link } from "react-router-dom";
 
 export default function NavBar(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,15 +61,11 @@ export default function NavBar(): JSX.Element {
               </li>
             ))}
             {/* Mobile login button inside menu */}
-            <li className="md:hidden flex justify-center">
-              <Button to="/login">Login</Button>
-            </li>
           </ul>
 
           {/* Desktop login icon */}
-          <NavLink className="hidden md:block" to="/login">
-            <HiOutlineUser className="w-6 h-6" />
-          </NavLink>
+
+          <User />
 
           {/* Cart Sidebar */}
           <CartSidebar />
