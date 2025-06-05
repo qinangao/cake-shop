@@ -6,9 +6,10 @@ import Contact from "./UI/pages/Contact";
 import AppLayout from "./UI/AppLayout";
 import Login from "./features/user/Login";
 import CakeDetail from "./features/menu/CakeDetail";
-import OrderOverview from "./features/order/OrderOverview";
+import OrderOverview from "./features/order/OrderCheckout";
 import { CustomerInfoProvider } from "./hooks/useCustomerInfo";
 import OrderConfirmation from "./UI/pages/OrderConfirmation";
+import { AuthProvider } from "./hooks/useAuth";
 
 const router = createBrowserRouter([
   {
@@ -28,9 +29,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <CustomerInfoProvider>
-      <RouterProvider router={router} />
-    </CustomerInfoProvider>
+    <AuthProvider>
+      <CustomerInfoProvider>
+        <RouterProvider router={router} />
+      </CustomerInfoProvider>
+    </AuthProvider>
   );
 }
 
